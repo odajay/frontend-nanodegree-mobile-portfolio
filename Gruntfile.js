@@ -28,7 +28,8 @@ module.exports = function(grunt) {
                         height: 240
                     }, {
                         name: 'small',
-                        width: 100
+                        width: 100,
+                        quality: 10
                     }, {
                         name: 'large',
                         width: 640
@@ -58,6 +59,17 @@ module.exports = function(grunt) {
                 files: {
                     'dist/js/output.min.js': ['dist/js/scripts.js']
                 }
+            },
+        },
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'css/',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'dist/css',
+                    ext: '.min.css'
+                }]
             },
         },
         pagespeed: {
@@ -97,5 +109,5 @@ module.exports = function(grunt) {
 
 
     // Register default tasks
-    grunt.registerTask('default', ['responsive_images', 'concat', 'uglify', 'udacity-ngrok']);
+    grunt.registerTask('default', ['responsive_images', 'concat', 'uglify', 'cssmin', 'udacity-ngrok']);
 };
