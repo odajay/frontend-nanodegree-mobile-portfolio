@@ -29,7 +29,7 @@ module.exports = function(grunt) {
                     }, {
                         name: 'small',
                         width: 100,
-                        quality: 10
+                        quality: 1
                     }, {
                         name: 'large',
                         width: 640
