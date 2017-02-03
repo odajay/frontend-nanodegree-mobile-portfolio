@@ -403,16 +403,18 @@ var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
   // Changes the value for the size of the pizza above the slider
+  // Jon: Optimization using getElementById
   function changeSliderLabel(size) {
+    var pizzaSize = document.getElementById("pizzaSize");
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        pizzaSize.innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        pizzaSize.innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        pizzaSize.innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -423,6 +425,9 @@ var resizePizzas = function(size) {
 
 
   // Iterates through pizza elements on the page and changes their widths
+  // Jon: Simplification based on the FSL jank class. Getting rid of the previous dx function which was doing unncessary work.
+  // Optimization using getElementsByClassName and getElementById
+
   function changePizzaSizes(size) {
     switch(size) {
       case "1":
@@ -437,7 +442,7 @@ var resizePizzas = function(size) {
       default:
         console.log("bug in sizeSwitcher")
     }
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
     }
@@ -483,6 +488,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
@@ -491,7 +497,7 @@ function updatePositions() {
   var items = document.getElementsByClassName("mover");
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    console.log(phase, document.body.scrollTop/1250)
+    // console.log(phase, document.body.scrollTop/1250)
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -520,7 +526,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
