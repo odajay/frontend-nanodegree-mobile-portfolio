@@ -504,11 +504,25 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.getElementsByClassName("mover");
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    // console.log(phase, document.body.scrollTop/1250)
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  var x = document.body.scrollTop / 1250;
+  var phases = [
+  100 * Math.sin(x + 0),
+  100 * Math.sin(x + 1),
+  100 * Math.sin(x + 2),
+  100 * Math.sin(x + 3),
+  100 * Math.sin(x + 4),
+  ];
+  var items = window.items;
+  var itemsLength = window.items.length;
+  var j = 0;
+  // var items = document.getElementsByClassName("mover");
+  for (var i = 0; i < itemsLength; i++) {
+    // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    // console.log(phases)
+    // items[i].style.left = items[i].basicLeft + 100 * phases[i] + 'px';
+    items[i].style.transform = "translateX(" + phases[j] + "px";
+    j++;
+    j = (j > 4) ? 0 : j;
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -522,7 +536,6 @@ function updatePositions() {
   ticking = false;
   console.log(ticking)
 }
-
 
 
 // runs updatePositions on scroll
@@ -541,6 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.getElementById("movingPizzas1").appendChild(elem);
+    window.items = document.getElementsByClassName("mover");
   }
-  updatePositions();
+  requestTick();
 });
