@@ -1,6 +1,10 @@
 ## Website Performance Optimization portfolio project
 
-This is my attempt at optimizing the the two pages of the pizza store.
+This is my attempt at optimizing the the two pages index.html and views/pizza.html from the Udacity Pizza Store. 
+
+### Run the website
+1. Download or git clone the current GitHub repository
+2. Run the files index.html and views/pizza.html in an updated modern browser.
 
 ### Part 1: Optimize PageSpeed Insights score for index.html
 
