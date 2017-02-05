@@ -565,8 +565,11 @@ window.addEventListener("scroll", requestTick, false);
 document.addEventListener('DOMContentLoaded', function() {
     var cols = 8;
     var s = 256;
-    for (var i = 0; i < 200; i++) {
-        var elem = document.createElement('img');
+    //Jon comments for Reviewer: Creation of variable put outside the loop as it is very expensive
+    var elem;
+    //Jon comments for Reviewer: Amount of Pizza reduced to 48
+    for (var i = 0; i < 48; i++) {
+        elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza.png";
         elem.style.height = "100px";
