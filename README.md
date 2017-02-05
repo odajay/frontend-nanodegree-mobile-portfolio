@@ -3,20 +3,20 @@
 This is my attempt at optimizing the the two pages index.html and views/pizza.html from the Udacity Pizza Store. 
 
 ### Run the website
-1. Download or git clone the current GitHub repository
+1. Download or `git clone` the current GitHub repository in your local work folder
 2. Run the files index.html and views/pizza.html in an updated modern browser.
 
 ### Part 1: Optimize PageSpeed Insights score for index.html
 
-1. I globally inlined the CSS, font call included
+1. Inlined the CSS, font call included
 2. Compressed images
-3. I concatenated and minified when possible
+3. Concatenated and minified when possible
 4. Added async to JavaScript call when necessary
-5. I used Grunt and Ngrok, following [this tutorial](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/) in order to automatise my actions.
+5. Used Grunt and Ngrok, following [this tutorial](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/) in order to automatize my actions.
 
 ### Part 2: Optimize Frames per Second in pizza.html
 
-1. I used getElementById and getElementsByClassName as it is a best practice for speed
-2. I encapsulated the existing function in requestAnimationFrame()
+1. Used getElementById and getElementsByClassName as it is a best practice for speed
+2. Encapsulated the existing function in requestAnimationFrame()
 3. As some value don't change during the main loop, I took them off it then stored them in variables
-4. I used transform style for the animations
+4. Used transform style for the animations
