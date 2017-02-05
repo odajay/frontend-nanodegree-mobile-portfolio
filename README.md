@@ -5,10 +5,12 @@ This is my attempt at optimizing the the two pages index.html and views/pizza.ht
 ### Run the website
 1. Download or `git clone` the current GitHub repository in your local work folder
 2. Run the files index.html and views/pizza.html in an updated modern browser.
+3. You can additionaly access to a [Github hosted live version of the website here](http://odajay.com/frontend-nanodegree-mobile-portfolio/).
 
 ### Part 1: Optimize PageSpeed Insights score for index.html
 
-1. Inlined the CSS, font call included
+1. Inlined the CSS
+2. Loaded fonts via JavaScript using the [web font loader](https://css-tricks.com/loading-web-fonts-with-the-web-font-loader/).
 2. Compressed images
 3. Concatenated and minified when possible
 4. Added async to JavaScript call when necessary
